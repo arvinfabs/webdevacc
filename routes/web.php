@@ -6,8 +6,10 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ManagerAuthController;
 
 Route::get('/manager/login', [ManagerAuthController::class, 'showLogin'])->name('manager.login.form');
-Route::post('/manager/login', [ManagerAuthController::class, 'login'])->name('manager.login');
+Route::post('/manager/login', [ManagerAuthController::class, 'login'])->name('manager.login.submit');
 Route::post('/manager/logout', [ManagerAuthController::class, 'logout'])->name('manager.logout');
+Route::get('/manager/register', [ManagerAuthController::class, 'showRegisterForm'])->name('manager.register');
+Route::post('/manager/register', [ManagerAuthController::class, 'register'])->name('manager.register.submit');
 
 // Protect student routes
 Route::middleware('auth:manager')->group(function () {
