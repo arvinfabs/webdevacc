@@ -26,7 +26,8 @@ class StudentController extends Controller
 
         return redirect('/students')->with('success', 'Student added successfully!');
     }
-       public function edit($id)Add commentMore actions
+
+    public function edit($id)
     {
         $student  = Student::findOrFail($id);
         $students = Student::all(); // To keep the list visible while editing
@@ -60,6 +61,6 @@ class StudentController extends Controller
         $student = Student::findOrFail($id);
         $student->delete();
 
-        return redirect('/students')->with('success', 'Student deleted successfully!');Add commentMore actions
+        return redirect('/students')->with('success', 'Student deleted successfully!');
     }
 }

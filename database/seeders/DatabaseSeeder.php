@@ -14,17 +14,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed 1000 users using factory
-        User::factory(1000)->create();
+         $this->call(ManagerSeeder::class);
+        User::factory(10)->create();
 
-        // Seed Students table with sample data
-        Students::create([
-            'name' => 'Jaymark Duran',
-            'age' => 20,
-        ]);
-
-        Students::create([
-            'name' => 'JP Moto',
-            'age' => 22,
-        ]);
+        User::updateOrCreate(
+    ['email' => 'test@example.com'], // Search condition
+    [
+        'name' => 'Test User',
+        'gender' => 'Test Gender',
+        'password' => bcrypt('password123'), // Add password if needed
+    ]
+);
     }
 }
